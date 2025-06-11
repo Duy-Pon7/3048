@@ -156,6 +156,17 @@ class _SigninPageState extends State<SigninPage> {
                 color: AppPalette.neutural600,
               ),
             ),
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return 'Mật khẩu không được rỗng!';
+              }
+
+              if (value.length < 4) {
+                return 'Mật khẩu ít nhất 4 ký tự';
+              }
+
+              return null;
+            },
           );
         },
       );
