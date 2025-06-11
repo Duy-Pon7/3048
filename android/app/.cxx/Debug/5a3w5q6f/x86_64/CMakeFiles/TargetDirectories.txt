@@ -1,0 +1,2 @@
+D:/Mevivu/3048/android/app/.cxx/Debug/5a3w5q6f/x86_64/CMakeFiles/edit_cache.dir
+D:/Mevivu/3048/android/app/.cxx/Debug/5a3w5q6f/x86_64/CMakeFiles/rebuild_cache.dir
