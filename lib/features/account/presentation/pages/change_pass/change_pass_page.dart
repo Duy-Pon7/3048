@@ -13,7 +13,8 @@ import '../../widgets/account_base_widget.dart';
 
 class ChangePassPage extends StatefulWidget {
   const ChangePassPage({super.key});
-  static route() => MaterialPageRoute(builder: (context) => ChangePassPage());
+  static route() =>
+      MaterialPageRoute(builder: (context) => ChangePassPage());
 
   @override
   State<ChangePassPage> createState() => _ChangePassPageState();
@@ -96,7 +97,8 @@ class _ChangePassPageState extends State<ChangePassPage> {
                           if (_formKey.currentState!.validate()) {
                             context.read<UserBloc>().add(
                                   UserChangePass(
-                                    currentPass: currentPassCon.text.trim(),
+                                    currentPass:
+                                        currentPassCon.text.trim(),
                                     newPass: newPassCon.text.trim(),
                                     newPassConfirm:
                                         newPassConfimCon.text.trim(),

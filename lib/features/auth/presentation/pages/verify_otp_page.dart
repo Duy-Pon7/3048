@@ -105,6 +105,21 @@ class _VerifyOtpPageState extends State<VerifyOtpPage> {
                     SizedBox(
                       height: ScreenUtil.screenHeight * 0.01,
                     ),
+                    if (state
+                        is AuthFailure) // Hiển thị thông báo lỗi nếu AuthFailure
+                      Text(
+                        'Mã không đúng',
+                        style: Theme.of(context)
+                            .textTheme
+                            .bodyLarge!
+                            .copyWith(
+                              color: Colors.red,
+                              fontWeight: FontWeight.w600,
+                            ),
+                      ),
+                    SizedBox(
+                      height: ScreenUtil.screenHeight * 0.01,
+                    ),
                     _continueButton(),
                     SizedBox(
                       height: ScreenUtil.screenHeight * 0.01,
@@ -171,31 +186,14 @@ class _VerifyOtpPageState extends State<VerifyOtpPage> {
         text: 'Xác nhận',
         radius: SizeConstants.dimen_12.w,
       );
-
-  Widget _resendButton() => GestureDetector(
-        onTap: () => context
+  Widget _resendButton() => BasicButton(
+        onPressed: () => context
             .read<AuthBloc>()
             .add(AuthSendEmail(email: widget.email)),
-        child: RichText(
-          text: TextSpan(
-            text: 'Bạn không nhận được mã? ',
-            style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                  fontWeight: FontWeight.w600,
-                ),
-            children: [
-              TextSpan(
-                text: 'Gửi lại',
-                style:
-                    Theme.of(context).textTheme.bodyLarge!.copyWith(
-                          fontWeight: FontWeight.w600,
-                          color: AppPalette.secondary600,
-                          decoration: TextDecoration.underline,
-                          decorationColor: AppPalette.secondary600,
-                        ),
-              ),
-            ],
-          ),
-        ),
+        text: 'Gửi lại mã',
+        radius: SizeConstants.dimen_12.w,
+        backgroundColor: const Color(0x26985308),
+        textColor: AppPalette.secondary500,
       );
   @override
   void dispose() {

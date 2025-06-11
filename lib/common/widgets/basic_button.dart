@@ -11,6 +11,7 @@ class BasicButton extends StatelessWidget {
     this.height,
     this.backgroundColor = AppPalette.secondary500,
     this.radius,
+    this.textColor = Colors.white,
   });
   final VoidCallback onPressed;
   final String text;
@@ -18,6 +19,7 @@ class BasicButton extends StatelessWidget {
   final double? height;
   final Color? backgroundColor;
   final double? radius;
+  final Color? textColor;
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +44,7 @@ class BasicButton extends StatelessWidget {
           child: Text(
             text,
             style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                  color: Colors.white,
+                  color: textColor,
                 ),
           ),
         ),

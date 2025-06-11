@@ -39,7 +39,8 @@ class UserRepositoryImpl implements UserRepository {
     required String newPassConfirm,
   }) async {
     try {
-      final String message = await userRemoteDatasource.changePassword(
+      final String message =
+          await userRemoteDatasource.changePassword(
         currentPass: currentPass,
         newPass: newPass,
         newPassConfirm: newPassConfirm,

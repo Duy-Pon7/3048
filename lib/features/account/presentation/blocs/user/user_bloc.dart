@@ -23,7 +23,8 @@ class UserBloc extends Bloc<UserEvent, UserState> {
     on<UserChangePass>(_onUserChangePass);
   }
 
-  void _onUserReviseInfo(UserReviseInfo event, Emitter<UserState> emit) async {
+  void _onUserReviseInfo(
+      UserReviseInfo event, Emitter<UserState> emit) async {
     final res = await _reviseInfo.call(
       ReviseInfoParam(
         fullname: event.fullname,
@@ -40,7 +41,8 @@ class UserBloc extends Bloc<UserEvent, UserState> {
     );
   }
 
-  void _onUserChangePass(UserChangePass event, Emitter<UserState> emit) async {
+  void _onUserChangePass(
+      UserChangePass event, Emitter<UserState> emit) async {
     final res = await _changePassword.call(
       ChangePassParam(
         currentPass: event.currentPass,

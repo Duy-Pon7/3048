@@ -52,11 +52,14 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       isSaveToken: event.isSaveToken,
     ));
 
-    res.fold((failure) => emit(AuthFailure(message: failure.message)),
-        (success) async => emit(AuthMessageSuccess(message: success)));
+    res.fold(
+        (failure) => emit(AuthFailure(message: failure.message)),
+        (success) async =>
+            emit(AuthMessageSuccess(message: success)));
   }
 
-  void _onAuthSignup(AuthSignup event, Emitter<AuthState> emit) async {
+  void _onAuthSignup(
+      AuthSignup event, Emitter<AuthState> emit) async {
     final res = await _signup.call(SignupParams(
         email: event.email,
         birthday: event.birthday,
@@ -69,13 +72,15 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         (user) => emit(AuthUserSuccess(user: user)));
   }
 
-  void _onAuthSendEmail(AuthSendEmail event, Emitter<AuthState> emit) async {
+  void _onAuthSendEmail(
+      AuthSendEmail event, Emitter<AuthState> emit) async {
     final res = await _sendEmail.call(event.email);
     res.fold((failure) => emit(AuthFailure(message: failure.message)),
         (message) => emit(AuthMessageSuccess(message: message)));
   }
 
-  void _onAuthVerifyOtp(AuthVerifyOtp event, Emitter<AuthState> emit) async {
+  void _onAuthVerifyOtp(
+      AuthVerifyOtp event, Emitter<AuthState> emit) async {
     final res = await _verifyOtp.call(VerifyOtpParams(
       email: event.email,
       otp: event.otp,
@@ -100,7 +105,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     );
   }
 
-  void _onAuthGetSession(AuthGetSession event, Emitter<AuthState> emit) async {
+  void _onAuthGetSession(
+      AuthGetSession event, Emitter<AuthState> emit) async {
     final res = await _getAuth.call(NoParams());
 
     res.fold(
@@ -109,7 +115,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     );
   }
 
-  void _onAuthUpdateSession(AuthUpdateSession event, Emitter<AuthState> emit) {
+  void _onAuthUpdateSession(
+      AuthUpdateSession event, Emitter<AuthState> emit) {
     emit(AuthUserSuccess(user: event.user));
   }
 }

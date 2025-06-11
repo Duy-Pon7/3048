@@ -76,7 +76,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
               child: Column(
                 children: [
                   Image.asset(
-                    AppImage.logo,
+                    AppImage.logopass,
                     fit: BoxFit.cover,
                     width: ScreenUtil.screenWidth * 0.5,
                   ),
@@ -85,8 +85,11 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
                   ),
                   Text(
                     'Quên mật khẩu',
-                    style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                          fontWeight: FontWeight.w600,
+                    style: Theme.of(context)
+                        .textTheme
+                        .headlineSmall!
+                        .copyWith(
+                          fontWeight: FontWeight.w700,
                         ),
                   ),
                   SizedBox(
@@ -96,6 +99,17 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
                     hintText: 'Nhập mật khẩu mới',
                     controller: _passCon,
                     textInputAction: TextInputAction.next,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Mật khẩu không được rỗng!';
+                      }
+
+                      if (value.length < 4) {
+                        return 'Mật khẩu ít nhất 4 ký tự';
+                      }
+
+                      return null;
+                    },
                   ),
                   SizedBox(
                     height: ScreenUtil.screenHeight * 0.02,
@@ -104,6 +118,21 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
                     hintText: 'Xác nhận mật khẩu',
                     controller: _passConfirmCon,
                     textInputAction: TextInputAction.done,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Mật khẩu xác nhận không được rỗng!';
+                      }
+
+                      if (value.length < 4) {
+                        return 'Mật khẩu ít nhất 4 ký tự';
+                      }
+
+                      if (value != _passCon.text.trim()) {
+                        return 'Xác nhận mật khẩu không trùng khớp';
+                      }
+
+                      return null;
+                    },
                   ),
                   SizedBox(
                     height: ScreenUtil.screenHeight * 0.03,

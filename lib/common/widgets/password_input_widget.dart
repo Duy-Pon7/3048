@@ -13,10 +13,12 @@ class PasswordInputWidget extends StatelessWidget {
     required this.hintText,
     required this.controller,
     this.textInputAction,
+    this.validator,
   });
   final String hintText;
   final TextEditingController controller;
   final TextInputAction? textInputAction;
+  final String? Function(String?)? validator;
 
   @override
   Widget build(BuildContext context) {
@@ -32,12 +34,15 @@ class PasswordInputWidget extends StatelessWidget {
               controller: controller,
               textInputAction: textInputAction,
               keyboardType: TextInputType.visiblePassword,
-              prefixIcon: Icon(
-                Icons.password,
-                color: AppPalette.secondary500,
-              ),
+              validator: validator,
+              // prefixIcon: Icon(
+              //   Icons.password,
+              //   color: AppPalette.secondary500,
+              // ),
               suffixIcon: GestureDetector(
-                onTap: context.read<ObscureTextCubit>().toggleObscureText,
+                onTap: context
+                    .read<ObscureTextCubit>()
+                    .toggleObscureText,
                 child: Icon(
                   state ? Icons.visibility : Icons.visibility_off,
                   color: AppPalette.neutural600,

@@ -15,6 +15,12 @@ class _SigninPageState extends State<SigninPage> {
       _emailCon.clear();
       _passwordCon.clear();
       EasyLoading.dismiss();
+      EasyLoading.showToast(
+        state.message,
+        toastPosition: EasyLoadingToastPosition.bottom,
+      );
+    } else if (state is AuthUserSuccess) {
+      EasyLoading.dismiss();
       Navigator.pushReplacement(
         context,
         DashboardPage.route(),

@@ -11,7 +11,8 @@ import 'package:work_flow/core/di/service_locator.dart';
 import 'package:work_flow/features/dashboard/presentation/pages/dashboard_page.dart';
 
 void main() async {
-  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  WidgetsBinding widgetsBinding =
+      WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   await initializeDependencies();
   FlutterNativeSplash.remove();

@@ -30,7 +30,8 @@ class UserRemoteDatasourceImpl implements UserRemoteDatasource {
   String _getErrorMessage(Map<String, dynamic> errors) {
     String message = AppErrors.commonError;
     if (errors.containsKey('message_validate')) {
-      final validates = errors['message_validate'] as Map<String, dynamic>;
+      final validates =
+          errors['message_validate'] as Map<String, dynamic>;
       if (validates.containsKey('fullname')) {
         message = validates['fullname'].first;
       } else if (validates.containsKey('gender')) {
@@ -102,7 +103,8 @@ class UserRemoteDatasourceImpl implements UserRemoteDatasource {
         },
       );
       if (res.statusCode == 200) {
-        final returnedData = ResponseModel.fromJson(res.data, (json) => null);
+        final returnedData =
+            ResponseModel.fromJson(res.data, (json) => null);
         if (returnedData.message == null) {
           return AppErrors.commonError;
         }

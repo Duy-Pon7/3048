@@ -187,7 +187,8 @@ class AuthRemoteDatasourceImpl implements AuthRemoteDatasource {
       () => dioClient.put(
         url: AuthApiUrls.resetPassword,
         data: {
-          "email": email,
+          "type": "email",
+          "value": email,
           "password": newPass,
           "password_confirmation": newPassConfirm,
         },

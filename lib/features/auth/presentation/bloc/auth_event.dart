@@ -40,6 +40,12 @@ final class AuthSendEmail extends AuthEvent {
   AuthSendEmail({required this.email});
 }
 
+final class AuthSendResetEmail extends AuthInitial {
+  final String email;
+
+  AuthSendResetEmail({required this.email});
+}
+
 final class AuthVerifyOtp extends AuthEvent {
   final String email;
   final String otp;
